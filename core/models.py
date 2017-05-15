@@ -7,6 +7,10 @@ from django.db import models
 from django.contrib.auth.models import User
 # Create your models here.
 
+class UrlMode(models.Model):
+	name = models.CarField(max_length=100)
+	urlpart = models.CharField(max_length=100)
+
 class Application(models.Model):
 	name = models.CharField(max_length=200, blank=True, null=True)
 	logo = models.CharField(max_length=100, blank=True, null=True)
@@ -14,6 +18,8 @@ class Application(models.Model):
 	color = models.CharField(max_length=10, blank=True, null=True)
 	textcolor = models.CharField(max_length=10, blank=True, null=True)
 	description = models.TextField()
+
+	urlmode = models.ForeignKey(UrlMode)
 
 	key = models.UUIDField(default=uuid.uuid4)
 
@@ -26,7 +32,7 @@ class Application(models.Model):
 
 class AppConfiguration(models.Model):
 	usr = models.ForeignKey(User)
-	applicativo = models.ForeignKey(Application, related_name="enabled")
+	application = models.ForeignKey(Application, related_name="enabled")
 
 	conf = models.TextField()
 

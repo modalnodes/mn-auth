@@ -4,10 +4,10 @@
         <div class="introduction" style="width: 50%; height: 100%;">
             <div class="intro-content">
                 <h1>
-                    Cruscotto
+                    Dashboard
                 </h1> 
-                <span>Cedascom</span>
-				<p class="slogan-text text-capitalize">Benvenuto, <strong>{{user.first_name}} {{user.last_name}}</strong></p>
+                <span></span>
+				<p class="slogan-text text-capitalize">Welcome, <strong>{{user.first_name}} {{user.last_name}}</strong></p>
 				<div class="social-media hidden-xs">
                     <a href="/logout" class="fa fa-fw fa-sign-out" title="Esci" data-original-title="Esci"></a>
                     <a href="/changepw" class="fa fa-fw fa-key" title="Cambio Passord" data-original-title="Cambio Password"></a>
@@ -56,7 +56,7 @@
                 </div>
                 <div class="heading">
                 	<a target="_blank"
-		               href="{{svc.url}}/#/login;token={{token}}">
+		               href="{{svc.url}}{{svc.urlpart}}{{token}}"><!--/#/login;token=-->
                     <i class="fa fa-fw fa-{{svc.logo}} hidden-xs"></i>
                     <h2>{{svc.name}}</h2>
                     </a>

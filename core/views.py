@@ -40,7 +40,15 @@ def dash(request):
 	payload = jwt_payload_handler(request.user)
 	token = jwt_encode_handler(payload)
 
-	return render(request, "dashboard.html", {
-		"token":token, 
-		"services":Applicativo.objects.filter(abilitati__usr=request.user), 
-		"len":len(Applicativo.objects.filter(abilitati__usr=request.user))})
+	svcs = Application.objects.filter(enabled__usr=request.user)
+
+	if svcs.count() > 1:
+
+		return render(request, "dashboard.html", {
+			"token":token, 
+			"services":svcs, 
+			"len":svcs.count()})
+	else:
+		svc = svcs[0]
+		
+		return HttpResponseRedirect(svc.url+svc.urlpart+token)
