@@ -50,5 +50,5 @@ def dash(request):
 			"len":svcs.count()})
 	else:
 		svc = svcs[0]
-		
-		return HttpResponseRedirect(svc.url+svc.urlpart+token)
+		full_url = "%s%s%s" % (svc.url, svc.urlpart, token)
+		return HttpResponseRedirect(full_url)
