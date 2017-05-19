@@ -7,7 +7,6 @@ argparse==1.2.1
 backports-abc==0.5
 backports.ssl-match-hostname==3.5.0.1
 certifi==2017.4.17
-chardet==2.0.1
 configobj==4.7.2
 coreapi==2.3.0
 coreschema==0.0.4
