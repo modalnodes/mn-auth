@@ -22,7 +22,7 @@ from rest_framework_swagger.views import get_swagger_view
 
 import rest_framework_jwt.views
 
-schema_view = get_swagger_view(title='Pastebin API')
+schema_view = get_swagger_view(title='Modal Nodes Auth API')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
