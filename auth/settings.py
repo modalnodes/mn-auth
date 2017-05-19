@@ -25,7 +25,7 @@ SECRET_KEY = '5li*gb6t_k0mg!ej!b1@msz$==n^lsgv)df^n#k%s0-6%*(&is'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-DOMAINS = os.environ.get('DOMAIN')
+DOMAINS = os.environ.get('DOMAIN', "*")
 DOMAINS = DOMAINS.split(",")
 
 ALLOWED_HOSTS = DOMAINS
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'oidc_provider',
     'rest_framework',
+    'rest_framework_swagger',
     'rest_framework.authtoken',
     'djoser',
     'core',

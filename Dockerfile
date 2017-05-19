@@ -11,5 +11,6 @@ COPY . .
 
 EXPOSE 8090
 
+CMD [ "python", "manage.py", "migrate" ]
 CMD [ "python", "manage.py", "runserver", "0.0.0.0:8090" ]
 

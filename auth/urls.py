@@ -18,7 +18,11 @@ from django.contrib import admin
 
 from core.views import * 
 
+from rest_framework_swagger.views import get_swagger_view
+
 import rest_framework_jwt.views
+
+schema_view = get_swagger_view(title='Pastebin API')
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -29,5 +33,7 @@ urlpatterns = [
     url(r'^login/', login),
     url(r'^logout/', logout),
     url(r'^$', dash),
+    
+    url(r'^docs$', schema_view),
 
 ]
