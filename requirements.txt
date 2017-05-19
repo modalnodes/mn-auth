@@ -23,8 +23,6 @@ djoser==0.5.4
 future==0.16.0
 html5lib==0.999
 httplib2==0.8
-ipython==1.2.1
-itypes==1.1.0
 keyring==3.5
 launchpadlib==1.10.2
 lockfile==0.8
