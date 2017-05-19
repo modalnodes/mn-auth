@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'oidc_provider',
     'rest_framework',
+    'rest_framework_swagger',
     'rest_framework.authtoken',
     'djoser',
     'core',
