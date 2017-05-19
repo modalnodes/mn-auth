@@ -11,6 +11,9 @@ class UrlMode(models.Model):
 	name = models.CharField(max_length=100)
 	urlpart = models.CharField(max_length=100)
 
+	def __str__(self):
+		return "{0} ({1})".format(self.name, self.urlpart)
+
 class Application(models.Model):
 	name = models.CharField(max_length=200, blank=True, null=True)
 	logo = models.CharField(max_length=100, blank=True, null=True)
