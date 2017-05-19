@@ -41,7 +41,6 @@ pycrypto==2.6.1
 pycryptodomex==3.4.5
 pygpgme==0.3
 pyjwkest==1.3.0
-python-apt==0.9.3.5ubuntu2
 python-dateutil==1.5
 python-openid==2.2.5
 pytz==2012c
