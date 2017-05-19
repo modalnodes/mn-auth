@@ -20,7 +20,6 @@ django-rest-swagger==2.1.2
 djangorestframework==3.6.3
 djangorestframework-jwt==1.10.0
 djoser==0.5.4
-duplicity==0.6.23
 future==0.16.0
 html5lib==0.999
 httplib2==0.8
