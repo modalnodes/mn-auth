@@ -32,8 +32,8 @@ urlpatterns = [
 
     url(r'^login/', login),
     url(r'^logout/', logout),
+    url(r'^docs$', schema_view),
     url(r'^$', dash),
     
-    url(r'^docs$', schema_view),
 
 ]
