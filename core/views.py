@@ -48,7 +48,9 @@ def dash(request):
 			"token":token, 
 			"services":svcs, 
 			"len":svcs.count()})
-	else:
+	elif svcs.count() == 1:
 		svc = svcs[0]
 		full_url = "%s%s%s" % (svc.url, svc.urlmode, token)
 		return HttpResponseRedirect(full_url)
+	else: 
+		return HttpResponseRedirect("/admin")

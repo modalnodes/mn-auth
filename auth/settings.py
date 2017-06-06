@@ -179,6 +179,9 @@ AUTHENTICATION_BACKENDS = (
     'social_core.backends.google.GoogleOAuth',
     'social_core.backends.twitter.TwitterOAuth',
     'social_core.backends.yahoo.YahooOpenId',
-    
+    'social_core.backends.docker.DockerOAuth2',
     'django.contrib.auth.backends.ModelBackend',
 )
+
+# KEY/SECRET MAGIC?
+
