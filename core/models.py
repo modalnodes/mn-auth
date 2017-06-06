@@ -91,9 +91,9 @@ class UserSerializer(serializers.ModelSerializer):
 			claims = list(set([ac.claim for ac in AppClaim.objects.filter(application__key=k)]))
 			ret = {}
 			for uc in UserClaim.objects.filter(user = obj, claim__in=claims):
-				if uc.type == "json":
+				if uc.claim.type == "json":
 					ret[uc.claim.name] = json.loads(uc.value)
-				elif uc.type == "int":
+				elif uc.claim.type == "int":
 					ret[uc.claim.name] = int(uc.value)
 				else:
 					ret[uc.claim.name] = uc.value
