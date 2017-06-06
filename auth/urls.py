@@ -30,6 +30,8 @@ urlpatterns = [
     url(r'^auth/login', rest_framework_jwt.views.obtain_jwt_token),  # using JSON web token
     url(r'^auth/', include('djoser.urls.authtoken')),
 
+    url('', include('social_django.urls', namespace='social')),
+
     url(r'^login/', login),
     url(r'^logout/', logout),
     url(r'^docs$', schema_view),

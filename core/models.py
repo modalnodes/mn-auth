@@ -39,6 +39,32 @@ class AppConfiguration(models.Model):
 
 	conf = models.TextField()
 
+DATA_TYPES = (
+    ('int', 'Integer'),
+    ('str', 'String'),
+    ('json', 'JSON Object'),
+    ('array|int', 'Array of integer'),
+    ('array|str', 'Array of string'),
+)
+
+class ClaimType(models.Model):
+	name = models.CharField(max_length=100)
+	type = models.CharField(max_length=100, choices=DATA_TYPES)
+	
+	def __unicode__(self):
+		return self.name
+	
+class AppClaim(models.Model):
+	application = models.ForeignKey(Application, related_name="valid_claims")
+	claim = models.ForeignKey(ClaimType)
+
+class UserClaim(models.Model):
+	user = models.ForeignKey(User, related_name="claims")
+	claim = models.ForeignKey(ClaimType)
+	value = models.TextField()
+
+# --- API
+
 from rest_framework import serializers
 
 class UserSerializer(serializers.ModelSerializer):

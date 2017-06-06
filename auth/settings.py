@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'corsheaders',
+    'social_django',
     'oidc_provider',
     'rest_framework',
     'rest_framework_swagger',
@@ -70,6 +71,8 @@ TEMPLATES = [
         'OPTIONS': {
             'context_processors': [
                 'django.template.context_processors.debug',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
@@ -84,10 +87,20 @@ WSGI_APPLICATION = 'auth.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+dbtypes = {
+    "sqlite":'django.db.backends.sqlite3',
+    "psql":"",
+    "mysql":"",
+}
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': dbtypes.get(os.environ.get("DB_TYPE","sqlite")),
+        'NAME': os.environ.get("DB_NAME",os.path.join(BASE_DIR, 'db.sqlite3')),
+        "USER": os.environ.get("DB_USER"),
+        "PASSWORD": os.environ.get("DB_PASSWORD"),
+        "HOST": os.environ.get("DB_HOST"),
+        "PORT": os.environ.get("DB_PORT"),
     }
 }
 
@@ -146,8 +159,8 @@ REST_FRAMEWORK = {
 }
 
 DJOSER = {
-    'DOMAIN': 'auth.cedascom.bo.it',
-    'SITE_NAME': 'Cedascom',
+    'DOMAIN': DOMAINS[0],
+    'SITE_NAME': os.environ.get("SITE_NAME"),
     'PASSWORD_RESET_CONFIRM_URL': '#/password/reset/confirm/{uid}/{token}',
     'ACTIVATION_URL': '#/activate/{uid}/{token}',
     'SEND_ACTIVATION_EMAIL': True,
@@ -158,3 +171,14 @@ DJOSER = {
 }
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+    'social_core.backends.google.GoogleOAuth',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.yahoo.YahooOpenId',
+    
+    'django.contrib.auth.backends.ModelBackend',
+)
