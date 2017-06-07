@@ -89,8 +89,9 @@ WSGI_APPLICATION = 'auth.wsgi.application'
 
 dbtypes = {
     "sqlite":'django.db.backends.sqlite3',
-    "psql":"",
-    "mysql":"",
+    "psql":"django.db.backends.postgresql",
+    "mysql":"django.db.backends.mysql",
+    "oracle":"django.db.backends.oracle",
 }
 
 DATABASES = {
